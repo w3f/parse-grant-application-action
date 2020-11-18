@@ -6,10 +6,18 @@ inputs:
     description: 'File path'
     required: true
 outputs:
-  proposer:
-    description: 'Grant author'
+  team_name:
+    description: 'Team name'
+  contact_name:
+    description: 'Contact name'
+  contact_email:
+    description: 'Contact email'
   project_name:
     description: 'Project name'
+  address:
+    description: 'Registered address of legal entity'
+  total_cost:
+    description: 'Total cost, BTC'
 runs:
   using: 'node12'
   main: 'dist/index.js'
