@@ -1,16 +1,15 @@
-name: Read file
-author: juliangruber
+name: Read grant file
+author: mmagician
 description: 'Read file contents'
-branding:
-  icon: 'file'
-  color: purple
 inputs:
   path:
     description: 'File path'
     required: true
 outputs:
-  content:
-    description: 'File content'
+  proposer:
+    description: 'Grant author'
+  project_name:
+    description: 'Project name'
 runs:
   using: 'node12'
   main: 'dist/index.js'
