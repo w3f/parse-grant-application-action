@@ -7,7 +7,7 @@ const main = async () => {
   const path = core.getInput('path');
   const content = await fs.readFile(path, 'utf8');
 
-  regex_list = [
+  let regex_list = [
     /(?<=\*\*Team Name:\*\* ).*/g,
     /(?<=\*\*Project Name:\*\* ).*/g,
     /(?<=\*\*Contact Name:\*\* ).*/g,
@@ -16,7 +16,7 @@ const main = async () => {
     /(?<=\*\*Registered Address:\*\* ).*/g
   ]
 
-  outputs = [
+  let outputs = [
     'team_name',
     'project_name',
     'contact_name',
