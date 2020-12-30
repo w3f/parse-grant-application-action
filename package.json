@@ -1,7 +1,7 @@
 {
   "name": "read-file-action",
   "private": true,
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "description": "Read file contents",
   "repository": "mmagician/read-file-action",
