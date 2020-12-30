@@ -12,8 +12,8 @@ const main = async () => {
     /(?<=\*\*Project Name:\*\* ).*/g,
     /(?<=\*\*Contact Name:\*\* ).*/g,
     /(?<=\*\*Contact Email:\*\* ).*/g,
-    /(?<=\*\*Total Costs:\*\* ).*(?= BTC)/g,
-    /(?<=\*\*Total Costs:\*\* ).*(?= DAI)/g,
+    /(?<=\*\*Total Costs:\*\* ).*(?= (?i)(BTC))/g,
+    /(?<=\*\*Total Costs:\*\* ).*(?= (?i)(DAI))/g,
     /(?<=\*\*Registered Address:\*\* ).*/g
   ]
 
