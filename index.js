@@ -13,6 +13,7 @@ const main = async () => {
     /(?<=\*\*Contact Name:\*\* ).*/g,
     /(?<=\*\*Contact Email:\*\* ).*/g,
     /(?<=\*\*Total Costs:\*\* ).*(?= BTC)/g,
+    /(?<=\*\*Total Costs:\*\* ).*(?= DAI)/g,
     /(?<=\*\*Registered Address:\*\* ).*/g
   ]
 
@@ -21,7 +22,8 @@ const main = async () => {
     'project_name',
     'contact_name',
     'contact_email',
-    'total_cost',
+    'total_cost_btc',
+    'total_cost_dai',
     'address'
   ]
 

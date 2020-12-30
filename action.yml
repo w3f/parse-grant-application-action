@@ -16,8 +16,10 @@ outputs:
     description: 'Project name'
   address:
     description: 'Registered address of legal entity'
-  total_cost:
+  total_cost_btc:
     description: 'Total cost, BTC'
+  total_cost_dai:
+    description: 'Total cost, DAI'
 runs:
   using: 'node12'
   main: 'dist/index.js'
