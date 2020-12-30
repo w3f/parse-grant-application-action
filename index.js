@@ -1,23 +1,23 @@
 'use strict'
 
-const core = require('@actions/core');
-const { promises: fs } = require('fs');
+const core = require('@actions/core')
+const { promises: fs } = require('fs')
 
 const main = async () => {
-  const path = core.getInput('path');
-  const content = await fs.readFile(path, 'utf8');
+  const path = core.getInput('path')
+  const content = await fs.readFile(path, 'utf8')
 
-  let regex_list = [
+  const regexList = [
     /(?<=\*\*Team Name:\*\* ).*/g,
     /(?<=\*\*Project Name:\*\* ).*/g,
     /(?<=\*\*Contact Name:\*\* ).*/g,
     /(?<=\*\*Contact Email:\*\* ).*/g,
-    /(?<=\*\*Total Costs:\*\* ).*(?= (?i)(BTC))/g,
-    /(?<=\*\*Total Costs:\*\* ).*(?= (?i)(DAI))/g,
+    /(?<=\*\*Total Costs:\*\* ).*(?= BTC)/gi,
+    /(?<=\*\*Total Costs:\*\* ).*(?= DAI)/gi,
     /(?<=\*\*Registered Address:\*\* ).*/g
   ]
 
-  let outputs = [
+  const outputs = [
     'team_name',
     'project_name',
     'contact_name',
@@ -27,15 +27,14 @@ const main = async () => {
     'address'
   ]
 
-  regex_list.map(function(reg, i) {
+  regexList.map(function (reg, i) {
     try {
-      let result = content.match(reg)[0];
-      core.setOutput(outputs[i], result);
+      const result = content.match(reg)[0]
+      core.setOutput(outputs[i], result)
     } catch {
-      core.error(`Match not found for: ${outputs[i]}`);
+      core.error(`Match not found for: ${outputs[i]}`)
     }
-  });
-  
+  })
 }
 
 main().catch(err => core.setFailed(err.message))
