@@ -9,15 +9,11 @@ const main = async () => {
 
   const regexList = [
     /(?<=\*\*Project Name:\*\* ).*/g,
-    /(?<=\*\*Contract URL:\*\* ).*/g,
+    /(?<=\*\*PR Link:\*\* ).*/g,
     /(?<=\*\*Milestone Number:\*\* ).*/g
   ]
 
-  const outputs = [
-    'project_name',
-    'contract_url',
-    'milestone_number'
-  ]
+  const outputs = ['project_name', 'contract_url', 'milestone_number']
 
   regexList.map(function (reg, i) {
     try {

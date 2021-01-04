@@ -127,7 +127,7 @@ const main = async () => {
 
   const regexList = [
     /(?<=\*\*Project Name:\*\* ).*/g,
-    /(?<=\*\*Contract URL:\*\* ).*/g,
+    /(?<=\*\*PR Link:\*\* ).*/g,
     /(?<=\*\*Milestone Number:\*\* ).*/g
   ]
 
