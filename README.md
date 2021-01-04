@@ -2,6 +2,9 @@
 
 Read file contents. Forked and adapted from https://github.com/juliangruber/read-file-action
 
+Two branches of this repo will be used for parsing different target repos.
+Use the master branch for parsing applications from the [Open-Grants](https://github.com/w3f/Open-Grants-Program/) repo, and the grant-delivery branch for [Grant-Milestone-Delivery](https://github.com/w3f/Grant-Milestone-Delivery/) repo.
+
 ## Usage
 
 ```yaml

@@ -126,23 +126,15 @@ const main = async () => {
   const content = await fs.readFile(path, 'utf8')
 
   const regexList = [
-    /(?<=\*\*Team Name:\*\* ).*/g,
     /(?<=\*\*Project Name:\*\* ).*/g,
-    /(?<=\*\*Contact Name:\*\* ).*/g,
-    /(?<=\*\*Contact Email:\*\* ).*/g,
-    /(?<=\*\*Total Costs:\*\* ).*(?= BTC)/gi,
-    /(?<=\*\*Total Costs:\*\* ).*(?= DAI)/gi,
-    /(?<=\*\*Registered Address:\*\* ).*/g
+    /(?<=\*\*Contract URL:\*\* ).*/g,
+    /(?<=\*\*Milestone Number:\*\* ).*/g
   ]
 
   const outputs = [
-    'team_name',
     'project_name',
-    'contact_name',
-    'contact_email',
-    'total_cost_btc',
-    'total_cost_dai',
-    'address'
+    'contract_url',
+    'milestone_number'
   ]
 
   regexList.map(function (reg, i) {
