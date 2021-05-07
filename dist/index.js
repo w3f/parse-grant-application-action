@@ -131,7 +131,7 @@ const main = async () => {
     /(?<=\*\*Contact Name:\*\* ).*/g,
     /(?<=\*\*Contact Email:\*\* ).*/g,
     /(?<=\*\*Total Costs:\*\* ).*(?= BTC)/gi,
-    /(?<=\*\*Total Costs:\*\* ).*(?= DAI)/gi,
+    /(?<=\*\*Total Costs:\*\* ).*(?=( DAI)|( USD))/gi,
     /(?<=\*\*Registered Address:\*\* ).*/g
   ]
 
@@ -150,7 +150,7 @@ const main = async () => {
       const result = content.match(reg)[0]
       core.setOutput(outputs[i], result)
     } catch {
-      core.error(`Match not found for: ${outputs[i]}`)
+      core.warning(`Match not found for: ${outputs[i]}`)
     }
   })
 }
