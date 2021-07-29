@@ -1,4 +1,4 @@
-# read-file-action
+# parse-grant-application-action
 
 Read file contents. Forked and adapted from https://github.com/juliangruber/read-file-action
 
