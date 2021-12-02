@@ -8,6 +8,8 @@ inputs:
 outputs:
   team_name:
     description: 'Team name'
+  level:
+    description: 'Grant level'
   contact_name:
     description: 'Contact name'
   contact_email:
