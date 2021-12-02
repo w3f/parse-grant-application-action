@@ -15,7 +15,7 @@ const main = async () => {
     /(?<=\*\*Total Costs:\*\* ).*(?= BTC)/gi,
     /(?<=\*\*Total Costs:\*\* ).*(?=( DAI)|( USD))/gi,
     /(?<=\*\*Registered Address:\*\* ).*/g,
-    /(?<=\*\*((Level)|(\[Level\]\(https:\/\/github.com\/w3f\/Grants-Program\/tree\/master#level_slider-levels\))):\*\* ).*/g
+    /(?<=\*\*((Level)|(\[Level\]\(https:\/\/github.com\/w3f\/Grants-Program\/tree\/master#level_slider-levels\))):\*\*.*)\d+/g
   ]
 
   const outputs = [
