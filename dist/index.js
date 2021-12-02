@@ -132,7 +132,8 @@ const main = async () => {
     /(?<=\*\*Contact Email:\*\* ).*/g,
     /(?<=\*\*Total Costs:\*\* ).*(?= BTC)/gi,
     /(?<=\*\*Total Costs:\*\* ).*(?=( DAI)|( USD))/gi,
-    /(?<=\*\*Registered Address:\*\* ).*/g
+    /(?<=\*\*Registered Address:\*\* ).*/g,
+    /(?<=\*\*((Level)|(\[Level\]\(https:\/\/github.com\/w3f\/Grants-Program\/tree\/master#level_slider-levels\))):\*\*.*)\d+/g
   ]
 
   const outputs = [
@@ -142,7 +143,8 @@ const main = async () => {
     'contact_email',
     'total_cost_btc',
     'total_cost_dai',
-    'address'
+    'address',
+    'level'
   ]
 
   regexList.map(function (reg, i) {
