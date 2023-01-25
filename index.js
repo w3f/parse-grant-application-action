@@ -42,6 +42,8 @@ const main = async () => {
     },
   ]
 
+  let not_found = [];
+
   regexList.map(function (reg) {
     try {
       switch (reg.name) {
@@ -55,8 +57,14 @@ const main = async () => {
       }
     } catch {
       core.warning(`Match not found for: ${reg.name}`)
+      not_found.push(reg.name)
     }
   })
+
+  if (not_found.length > 0) {
+    const error_string = not_found.join(', ')
+    core.setFailed(`Match not found for: ${error_string}`)
+  }
 }
 
 main().catch(err => core.setFailed(err.message))
