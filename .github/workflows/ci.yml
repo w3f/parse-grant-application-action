@@ -10,7 +10,10 @@ jobs:
         run: |
           npm ci
           npm run build
-      - uses: ./
-        id: package
+      - name: Get example (well formed) application
+        run: |
+          wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/AdMeta.md"
+      - name: Test action
+        uses: ./
         with:
-          path: package.json
+          path: AdMeta.md

@@ -481,7 +481,7 @@ const main = async () => {
     },
     {
       name: 'total_cost_dai',
-      regex: /(?<=\*\*Total Costs:\*\* ).*(?=( DAI)|( USD))/gi,
+      regex: /(?<=\*\*Total Costs:\*\* ).*/g, // this will take also extra as $, USD, DAI...
     },
     {
       name: 'address',
@@ -502,6 +502,11 @@ const main = async () => {
   regexList.map(function (reg) {
     try {
       switch (reg.name) {
+        case 'total_cost_dai':
+          // take only the numbers removing extra strings like $, USD, DAI...
+          let total_cost_dai = content.match(reg.regex)[0].match(/\d+/g).join('')
+          core.setOutput(reg.name, total_cost_dai)
+          break
         case 'total_milestones':
           const milestones = content.match(reg.regex)
           core.setOutput(reg.name, milestones.length)
