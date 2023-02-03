@@ -47,6 +47,13 @@ const main = async () => {
   regexList.map(function (reg) {
     try {
       switch (reg.name) {
+        case 'project_name':
+          const project_name = content.match(reg.regex)[0]
+          if (project_name == "W3F Grant Proposal" || project_name == "Name of your Project") {
+            core.setFailed(`Project name is the default one. Please change it.`)
+          } else {
+            core.setOutput(reg.name, project_name)
+          }
         case 'total_cost_dai':
           // take only the numbers removing extra strings like $, USD, DAI...
           let total_cost_dai = content.match(reg.regex)[0].match(/\d+/g).join('')
@@ -61,7 +68,6 @@ const main = async () => {
           core.setOutput(reg.name, result)
       }
     } catch {
-      core.warning(`Match not found for: ${reg.name}`)
       not_found.push(reg.name)
     }
   })
