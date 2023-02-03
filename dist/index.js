@@ -2874,6 +2874,7 @@ const main = async () => {
           } else {
             core.setOutput(reg.name, project_name)
           }
+          break
         case 'total_cost_dai':
           // take only the numbers removing extra strings like $, USD, DAI...
           let total_cost_dai = content.match(reg.regex)[0].match(/\d+/g).join('')
