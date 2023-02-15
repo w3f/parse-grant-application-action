@@ -57,6 +57,7 @@ const main = async () => {
 
   let error_not_found = [];
   let warning_not_found = [];
+  let outputs = [];
 
   regexList.map(function (reg) {
     try {
@@ -66,29 +67,29 @@ const main = async () => {
           if (project_name === 'W3F Grant Proposal' || project_name === 'Name of your Project' || project_name === 'W3F Maintenance Grant Proposal') {
             core.setFailed(`Project name is the default one. Please change it.`)
           } else {
-            core.setOutput(reg.name, project_name)
+            outputs.push({name: reg.name, value: project_name})
           }
           break
         case 'total_cost_dai':
           if (!is_maintenance) {
             // take only the numbers removing extra strings like $, USD, DAI...
             let total_cost_dai = content.match(reg.regex)[0].match(/\d+/g).join('')
-            core.setOutput(reg.name, total_cost_dai)
+            outputs.push({name: reg.name, value: total_cost_dai})
           } else {
-            core.setOutput(reg.name, 0)
+            outputs.push({name: reg.name, value: "0"})
           }
           break
         case 'total_milestones':
           if (!is_maintenance) {
             const milestones = content.match(reg.regex)
-            core.setOutput(reg.name, milestones.length)
+            outputs.push({name: reg.name, value: milestones.length+""}) // convert to string
           } else {
-            core.setOutput(reg.name, 0)
+            outputs.push({name: reg.name, value: "0"})
           }
           break
         default:
           const result = content.match(reg.regex)[0]
-          core.setOutput(reg.name, result)
+          outputs.push({name: reg.name, value: result})
       }
     } catch {
       if (reg.mandatory) {
@@ -108,6 +109,17 @@ const main = async () => {
     const error_string = error_not_found.join(', ')
     core.setFailed(`Mandatory fields missing: ${error_string}`)
   }
+
+  // if setted outputs are in the form [output](link), take only "output"
+  outputs.map(function (out) {
+    if (out.value.includes('](')) {
+      let output = out.value.split('](')[0].replace('[', '')
+      core.setOutput(out.name, output)
+    } else {
+      core.setOutput(out.name, out.value)
+    }
+  })
+
 }
 
 main().catch(err => core.setFailed(err.message))

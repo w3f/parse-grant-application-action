@@ -12,13 +12,17 @@ jobs:
           npm run build
       - name: Get example (well formed) applications
         run: |
+          mkdir applications;
+          mkdir maintenance;
+          cd applications;
           wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/AdMeta.md";
+          cd ../maintenance;
           wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/maintenance/wasm-opt-for-rust.md"
       - name: Test action with normal application
         uses: ./
         with:
-          path: AdMeta.md
+          path: applications/AdMeta.md
       - name: Test action with maintenance application
         uses: ./
         with:
-          path: wasm-opt-for-rust.md
+          path: maintenance/wasm-opt-for-rust.md
