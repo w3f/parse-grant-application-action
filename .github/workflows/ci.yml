@@ -17,7 +17,7 @@ jobs:
           cd applications;
           wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/AdMeta.md";
           cd ../maintenance;
-          wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/maintenance/wasm-opt-for-rust.md"
+          wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/maintenance/wasm-opt-for-rust.md"
       - name: Test action with normal application
         uses: ./
         with:
