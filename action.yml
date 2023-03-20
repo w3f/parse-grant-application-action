@@ -5,6 +5,10 @@ inputs:
   path:
     description: 'File path'
     required: true
+  strict:
+    description: 'Strict mode: fails instead of warning'
+    required: false
+    default: 'true'
 outputs:
   team_name:
     description: 'Team name'
