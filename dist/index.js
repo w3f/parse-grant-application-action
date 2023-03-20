@@ -2825,9 +2825,10 @@ const { promises: fs } = __nccwpck_require__(147)
 
 const main = async () => {
   const path = core.getInput('path')
+  const strict = core.getInput('strict')
   const content = await fs.readFile(path, 'utf8')
 
-  // if the parser won't find a mandatory field, it will make the action fail
+  // if the parser won't find a mandatory field, it will make the action fail (if strict === true)
   // otherwise it will just warn
   const regexList = [
     {
@@ -2875,7 +2876,9 @@ const main = async () => {
   let is_maintenance = path.includes('maintenance')
   core.setOutput('is_maintenance', is_maintenance)
 
+  // for mandatory fields
   let error_not_found = [];
+  // for non-mandatory fields
   let warning_not_found = [];
   let outputs = [];
 
@@ -2927,7 +2930,11 @@ const main = async () => {
 
   if (error_not_found.length > 0) {
     const error_string = error_not_found.join(', ')
-    core.setFailed(`Mandatory fields missing: ${error_string}`)
+    if (strict === 'true') {
+      core.setFailed(`Mandatory fields missing: ${error_string}`)
+    } else {
+      core.warning(`Mandatory fields missing: ${error_string}`)
+    }
   }
 
   // if setted outputs are in the form [output](link), take only "output"
