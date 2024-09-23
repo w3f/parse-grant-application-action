@@ -37,6 +37,11 @@ const main = async () => {
       mandatory: true,
     },
     {
+      name: 'dot_percentage',
+      regex: /(?<=\*\*DOT %:\*\* ).*/g,
+      mandatory: true,
+    },
+    {
       name: 'address',
       regex: /(?<=\*\*Registered Address:\*\* ).*/g,
       mandatory: false,
