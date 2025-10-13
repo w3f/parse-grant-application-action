@@ -15,7 +15,7 @@ jobs:
           mkdir applications;
           mkdir maintenance;
           cd applications;
-          wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/AdMeta.md";
+          wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/Lollipop.md";
           cd ../maintenance;
           wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/maintenance/wasm-opt-for-rust.md"
       - name: Test action with normal application
