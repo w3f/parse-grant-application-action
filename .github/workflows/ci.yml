@@ -17,7 +17,7 @@ jobs:
           cd applications;
           wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/LunoKit.md";
           cd ../maintenance;
-          wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/maintenance/wasm-opt-for-rust.md"
+          wget "https://raw.githubusercontent.com/w3f/Grants-Program/master/applications/maintenance/substrate-interface-maintenance.md"
       - name: Test action with normal application
         uses: ./
         with:
@@ -25,4 +25,4 @@ jobs:
       - name: Test action with maintenance application
         uses: ./
         with:
-          path: maintenance/wasm-opt-for-rust.md
+          path: maintenance/substrate-interface-maintenance.md
