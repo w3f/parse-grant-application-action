@@ -49,7 +49,7 @@ const main = async () => {
     {
       name: 'level',
       regex: /(?<=\*\*((Level)|(\[Level\]\(https:\/\/github.com\/w3f\/Grants-Program\/tree\/master#level_slider-levels\))):\*\*.*)\d+/g,
-      mandatory: true,
+      mandatory: false,
     },
     {
       name: 'total_milestones',
